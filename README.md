@@ -16,6 +16,7 @@ It creates an isolated virtual network and launch the services inside it. The -d
 it'll start dumping the logs and when you press ctrl-c, it'll stop the services. Anyways, you can follow the logs by writing
 
 ``` docker-compose logs -f ```
+
 where "f" means follow, until you press ctrl-c (and in this case stopping the log stream won't stop the actual services).
 
 # Components
