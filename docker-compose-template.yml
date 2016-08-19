@@ -1,0 +1,110 @@
+version: '2'
+services:
+  mongo:
+    image: mongo:3
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  maint:
+    build:
+      context: ./container_maint
+      dockerfile: Dockerfile
+    environment:
+      - PROD=${PROD}
+      - APP_ROOT=${APP_ROOT}
+    env_file: ./.env
+
+  apiserver:
+    build:
+      context: ./container_apiserver
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - mongo
+    links:
+      - mongo:mongo
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - APP_ROOT=${APP_ROOT}
+      - BASE_DIR=${BASE_DIR}
+      - NODE_MODULE_PATH=${NODE_MODULE_PATH}
+      - PROD=${PROD}
+      - EXPOSED_PORT=7382
+      - SESSION_SECRET=${SESSION_SECRET}
+      - VALIDATE_PASSWORD=${VALIDATE_PASSWORD}
+      - MYHOST=${MYHOST}
+    env_file: ./.env
+    ports:
+      - "8077:8077"
+  logger:
+    build:
+      context: ./container_logger
+      dockerfile: Dockerfile
+    volumes:
+      - /var/log
+    environment:
+      - PROD=${PROD}
+      - APP_ROOT=/srv/src
+    env_file: ./.env
+    links:
+      - app_prod:app_staging
+      - worker:worker
+
+  worker:
+    build:
+      context: ./container_worker
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+    volumes:
+      - /data/share:/mnt:ro
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - BASE_DIR=${BASE_DIR}
+      - NODE_MODULE_PATH=${NODE_MODULE_PATH}
+      - APP_ROOT=${APP_ROOT}
+      - PROD=${PROD}
+    env_file: ./.env
+    restart: unless-stopped
+
+  app_prod:
+    build:
+      context: ./container_app
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - mongo
+    links:
+      - mongo:mongo
+    volumes:
+      ${HOST_DATA_VOLUME}
+      - /var/run/docker.sock:/var/run/docker.sock
+      - dbtest_data:/srv/data
+    environment:
+      - MYHOST=${MYHOST}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - APP_ROOT=/srv/build
+      - NODE_MODULE_PATH=${NODE_MODULE_PATH}
+      - BASE_DIR=${BASE_DIR}
+      - PROD=${PROD}
+      - EXPOSED_PORT=7282
+      - SESSION_SECRET=${SESSION_SECRET}
+      - VALIDATE_PASSWORD=${VALIDATE_PASSWORD}
+    env_file: ./.env
+    ports:
+      - "7282:8080"
+    restart: unless-stopped
+volumes:
+  dbtest_data:
+    driver: local
+  mongo_data:
+    driver: local
