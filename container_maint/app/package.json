@@ -1,0 +1,20 @@
+{
+  "name": "dbcloud_maintenance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gyula Weber <gyula.weber.in@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.0-rc.3",
+    "cron": "^1.1.0",
+    "randomstring": "^1.1.4",
+    "request": "^2.72.0",
+    "uuid4": "^1.0.0",
+    "zmq-comm": "0.0.2",
+    "zmq-log-sender": "^1.2.0"
+  }
+}

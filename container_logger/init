@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# APP_ROOT is an environmental variable coming from the compose file
+echo "app root is ${APP_ROOT}, node modules will be installed into ${NODE_MODULE_PATH}"
+
+if [[ "${PROD}" == "1" ]]; then
+  echo "PROD"
+  cd ${APP_ROOT}
+  node ./index.js
+else
+  echo "DEV"
+  cd ${NODE_MODULE_PATH}
+  npm install
+cd ${APP_ROOT}
+  node index.js
+fi

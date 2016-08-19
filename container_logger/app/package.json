@@ -1,0 +1,17 @@
+{
+  "name": "zmq-log-receiver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gyula Weber <gyula.weber.in@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bonjour": "^3.3.0",
+    "zmq": "2",
+    "zmq-comm": "0.0.2",
+    "zmq-logger": "^1.0.1"
+  }
+}
