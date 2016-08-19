@@ -1,6 +1,14 @@
 # dbcloud
 database server abstraction layer
 
+# How to try it out
+
+* Generate a compose file with your current environment. There is an .env-example file, so you just have to type 
+``` ./generate-compose.sh example ```
+
+* Build the containers
+``` docker-compose build ```
+
 # Components
 
 ## Services
