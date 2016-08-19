@@ -16,7 +16,6 @@ RUN npm install -g grunt
 ADD app/src /srv/src
 ADD app/Gruntfile.js /srv/
 RUN cd /srv/;grunt
-ADD app/a_dump_test /srv/a_dump_test
 
 ADD init /init
 WORKDIR /srv
