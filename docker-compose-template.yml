@@ -18,7 +18,6 @@ services:
     environment:
       - PROD=${PROD}
       - APP_ROOT=${APP_ROOT}
-    env_file: ./.env
 
   apiserver:
     build:
@@ -40,7 +39,6 @@ services:
       - SESSION_SECRET=${SESSION_SECRET}
       - VALIDATE_PASSWORD=${VALIDATE_PASSWORD}
       - MYHOST=${MYHOST}
-    env_file: ./.env
     ports:
       - "8077:8077"
   logger:
@@ -52,7 +50,6 @@ services:
     environment:
       - PROD=${PROD}
       - APP_ROOT=/srv/src
-    env_file: ./.env
     links:
       - app_prod:app_staging
       - worker:worker
@@ -72,7 +69,6 @@ services:
       - NODE_MODULE_PATH=${NODE_MODULE_PATH}
       - APP_ROOT=${APP_ROOT}
       - PROD=${PROD}
-    env_file: ./.env
     restart: unless-stopped
 
   app_prod:
@@ -99,7 +95,6 @@ services:
       - EXPOSED_PORT=7282
       - SESSION_SECRET=${SESSION_SECRET}
       - VALIDATE_PASSWORD=${VALIDATE_PASSWORD}
-    env_file: ./.env
     ports:
       - "7282:8080"
     restart: unless-stopped
