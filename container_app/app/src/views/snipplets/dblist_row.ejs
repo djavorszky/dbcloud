@@ -1,0 +1,143 @@
+<% if ((username != dbrow.username) && session.show_only_mine == 1) { %>
+
+<% } else { %>
+
+<tr id='dbrow_<%= dbrow._id %>' ref='<%= JSON.stringify(dbrow); %>'>
+
+<%
+    var dbserver;
+    if (dbrow.db_server === 'mysql_55') {
+      dbserver = 'MySQL 5.5';
+    } else if (dbrow.db_server === 'mysql_56') {
+      dbserver = 'MySQL 5.6';
+    } else if (dbrow.db_server === 'mysql_57') {
+      dbserver = 'MySQL 5.7';
+    } else {
+      dbserver = dbrow.db_server;
+    }
+%>
+
+  <td
+    class='row_status row_status_<%= dbrow.db_name %>
+    <% if (dbrow.db_status_code) { %>
+        status_<%= dbrow.db_status_code %>'
+    <% } else { %>
+        '
+    <% } %>
+
+    ref='<%= dbrow._id %>'
+    id='row_status_<%= dbrow._id %>'
+  >
+    <a href='#' class='show_status'><span class='glyphicon
+    glyphicon-chevron-down'></span></a>
+  </td>
+
+
+  <td class='db_server'> <%= dbserver %> </td>
+  <td class='db_name'> <%= dbrow.db_name %> </td>
+
+  <td class='import_file'>
+    <%= dbrow.import_file %>
+  </td>
+
+  <%
+    var name_arr = dbrow.username.split('.');
+    var full_username = name_arr[0].charAt(0).toUpperCase() + name_arr[0].slice(1) + ' ' +
+      name_arr[1].charAt(0).toUpperCase() + name_arr[1].slice(1);
+  %>
+
+  <td class='db_username'> <%= full_username %> </td>
+
+  <td class='additional_information dropdown'>
+
+    <button class="btn btn-default dropdown-toggle
+    <% if (dbrow.db_status_code) { %>
+        <% if (dbrow.db_status_code === 'progress') { %>
+           <!-- it should be disabled, but first syncronize with redis -->
+        <% } %>
+    <% } %>
+    controls_<%= dbrow._id %>"
+       type="button"
+       data-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="true"
+       id="dbrow_dropdown_<%= dbrow.db_name %>">
+       <span class='glyphicon glyphicon-list'></span>
+       <span class="caret"></span>
+    </button>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+      <li><a href="#" ref="<%= dbrow._id %>"
+        class="controls_<%= dbrow._id %> remove_db"
+        id="remove_db_<%= dbrow.db_name %>"> Remove </a>
+      </li>
+
+      <li>
+        <a href="#" ref="<%= dbrow._id %>" class="extend_30days"> +30 days </a>
+      </li>
+
+      <li>
+        <a
+          data-toggle="modal"
+          id="clone_db_<%= dbrow.db_name %>"
+          data-target='#modal_db_clone'
+          href="#"
+          ref="<%= dbrow._id %>"
+          class="clone_db">
+
+            Create a clone
+
+        </a>
+      </li>
+
+      <li>
+        <a data-toggle="modal" data-target="#modal_db_update_owner"
+          href="#" ref="<%= dbrow._id %>" class="update_owner">
+
+            Update owner
+        </a>
+      </li>
+    </ul>
+
+  </td>
+  <td>
+
+    <a data-toggle="modal" id="info_<%= dbrow._id %>"
+    data-target="#modal_db_info" class='db_info btn btn-default' ref='<%= dbrow._id %>' href='#'>  <span class='glyphicon
+    glyphicon-info-sign'></span></a>
+
+  </td>
+  </tr>
+
+  <tr class='hidden' id='dbrow_tr_status_<%= dbrow._id %>'>
+    <td colspan='5' id='dbrow_status_<%= dbrow._id %>'>
+            <% if (dbrow.db_status_message) { %>
+                <%= dbrow.db_status_message %>
+            <% } %>
+
+            <% if (dbrow.db_status_code == 'error') { %>
+                <br>
+
+                <a
+                    href='#'
+                      class='purge_db_record'
+                      ref='<%= dbrow._id %>'
+                    >
+                    I'm sure the record can be safely removed
+                    </a>
+
+            <% } %>
+
+            <% if(typeof(status_message) == 'undefined') { %>
+                <!-- do nothing -->
+            <% } else { %>
+
+
+            <%= status_message %>
+
+            <% } %>
+
+    </td>
+  </tr>
+  <% } %>

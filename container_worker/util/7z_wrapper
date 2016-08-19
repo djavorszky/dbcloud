@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FNAME=${1}
+if [[ ! -f ${FNAME} ]]; then
+  return 0
+fi
+
+7zr e -so -bd ${FNAME} 2>/dev/zero

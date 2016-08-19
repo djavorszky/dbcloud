@@ -1,0 +1,55 @@
+
+<div id="modal_db_info" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+
+<!-- Modal content-->
+<div class="modal-content modal-content-lg">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title"> Additional info about the Database</h4>
+</div>
+<div class="modal-body">
+        <h4> General </h4>
+        <p> Information about the database connection </p>
+
+        <p class='text-info'>
+              This database will expire at
+              <b><span class='info_expires'></span> </b>. <br>
+              The username is
+              <b><span class='info_db_username'></span></b>,
+              and the password is <b><span class='info_db_password'></span></b></p>
+
+        <h4> <= 6.2.x Portal settings </h4><br>
+
+        <p class='text-info'>
+        jdbc.default.driverClassName=com.mysql.jdbc.Driver<br>
+        jdbc.default.url=jdbc:mysql://<span class='info_db_host'></span>:<span class='info_db_port'></span>/<span class='info_db_name'></span>?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false<br>
+        jdbc.default.username=<span class='info_db_username'></span><br>
+        jdbc.default.password=<span class='info_db_password'></span><br>
+        </p>
+        <h4> DXP portal settings </h4>
+        <p class='text-info'>
+        jdbc.default.driverClassName=com.mysql.jdbc.Driver<br>
+        jdbc.default.url=jdbc:mysql://<span class='info_db_host'></span>:<span
+        class='info_db_port'></span>/<span class='info_db_name'></span>?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&useFastDateParsing=false&useUnicode=true<br>
+        jdbc.default.username=<span class='info_db_username'></span><br>
+        jdbc.default.password=<span class='info_db_password'></span><br>
+        </p>
+
+
+        <h4> Database connect string </h4>
+        <p class='text-info'>
+          mysql -u<span class='info_db_username'></span>
+          -p<span class='info_db_password'></span> -h <span class='info_db_host'></span>
+          -P <span class='info_db_port'></span>
+          <span class='info_db_name'></span><br>
+        </p>
+
+</div>
+<div class="modal-footer">
+</div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,7 @@
+
+# node modules
+app/node_modules
+
+# dynamic files
+app/src/data
+app/build/data

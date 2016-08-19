@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <%- include('../snipplets/head_mng.ejs'); %>
+  </head>
+
+  <body>
+  <div class='container-fluid'>
+    <div class='row'>
+      <%- include('../snipplets/top_nav.ejs'); %>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-8'>
+
+       <h2>
+         Database server connection management
+         <a href='#' id='add_new_dbserver'>
+           <span class='glyphicon glyphicon-plus'></span>
+         </a>
+
+         <a href='#' id='sample_dbservers'>
+           <p class='text-info'>[ add sample servers ]</p>
+         </a>
+       </h2>
+
+      </div> <!-- </row-md-6> ( first column ) -->
+    </div>
+
+    <div class='row'>
+
+      <!-- ################### NEW DB SERVER FORM ##################### -->
+      <div class='col-md-8'>
+
+        <!-- iterate trough dbservers and render the row for them -->
+        <p class='info'>
+          Manage connections; please note that the remove function
+          is not removing the actual database server instance, but
+          the list.
+        </p>
+        <table class='table'>
+
+        <th>Name</th>
+        <th>Version</th>
+        <th>Host</th>
+        <th>Port</th>
+        <th>Friendly name</th>
+        <th>Provider</th>
+        <th>Admin username</th>
+        <th>Admin password</th>
+
+          <% dbservers.forEach(function(dbserver) { %>
+            <% include dbserver_row.ejs %>
+          <% }); %>
+        </table>
+
+      </div> <!-- </col-md-8> - first column end
+
+      <!-- ################### DB SERVER LIST ##################### -->
+      <div class='col-md-4'>
+        <div id='div_new_dbserver'></div>
+      </div>
+
+    </div> <!-- </row> -->
+
+  </div> <!-- </container-fluid> -->
+  </body>
+
+</html>

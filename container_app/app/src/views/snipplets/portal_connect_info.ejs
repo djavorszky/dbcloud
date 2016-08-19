@@ -1,0 +1,13 @@
+
+ <h4> <= 6.2.x Portal Settings </h4>
+ jdbc.default.driverClassName=com.mysql.jdbc.Driver<br>
+ jdbc.default.url=jdbc:mysql://<%= db_data.db_host %>:<%= db_data.db_port %>/<%= db_data.db_name %>?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false<br>
+ jdbc.default.username=<%= db_data.db_username %><br>
+ jdbc.default.password=<%= db_data.db_password %><br>
+
+ <h4> DXP Portal Settings </h4>
+ jdbc.default.driverClassName=com.mysql.jdbc.Driver<br>
+ jdbc.default.url=jdbc:mysql://<%= db_data.db_host %>:<%= db_data.db_port %>/<%=
+ db_data.db_name %>?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&useFastDateParsing=false&useUnicode=true<br>
+ jdbc.default.username=<%= db_data.db_username %><br>
+ jdbc.default.password=<%= db_data.db_password %><br>

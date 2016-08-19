@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <%- include('../snipplets/head_mng.ejs'); %>
+  </head>
+
+  <body>
+    <%- include('../snipplets/top_nav.ejs'); %>
+    <%- include('../snipplets/choose_queue_view.ejs'); %>
+
+    <h2>
+      Queue management
+    </h2>
+    <table class='table'>
+
+    <th>Status</th>
+    <th>Created</th>
+    <th>Started</th>
+    <th>Failed</th>
+    <th>Duration</th>
+    <th>Type</th>
+    <th>Worker ID</th>
+    <th>Data</th>
+
+    <% jobs.forEach(function(job) { %>
+      <tr>
+        <td><%= job.status %></td>
+        <td><%= job.created_at %></td>
+        <td><%= job.started_at %></td>
+        <td><%= job.failed_at %></td>
+        <td><%= job.duration %></td>
+        <td><%= job.type %></td>
+        <td><%= job.workerId %></td>
+        <td><%= job.data %></td>
+      </tr>
+    <% }); %>
+    </table>
+
+  </body>
+
+</html>

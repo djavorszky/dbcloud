@@ -1,0 +1,43 @@
+#!/bin/bash
+
+TOKEN=<%= token %>
+BACKEND_NAME=mysql_56
+
+### optional parameters:
+# name: database name
+# username: database username
+# password: database password
+# backend_name: unique backend name
+
+# api documentation: http://r2d2:8077/docs/#!/database/databasePOST
+# note; it generates requests for localhost, so the try won't work out of
+# the box. If you want to use that, just let me know.
+
+DB_INFO=$(curl -s -X POST \
+  --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
+  "http://<%= MYHOST %>:8077/v1/database?token=${TOKEN}&backend_name=${BACKEND_NAME}")
+
+DB_USERNAME=$(echo "${DB_INFO}" | grep 'db_username' | awk '{print $2}' | sed 's/"//g' | sed 's/,$//g')
+DB_PASSWORD=$(echo "${DB_INFO}" | grep 'db_password'| awk '{print $2}' | sed 's/"//g' | sed 's/,$//g')
+DB_NAME=$(echo "${DB_INFO}" | grep 'db_name'| awk '{print $2}' | sed 's/"//g' | sed 's/,$//g')
+DB_HOST=$(echo "${DB_INFO}" | grep 'db_host'| awk '{print $2}' | sed 's/"//g' | sed 's/,$//g')
+DB_PORT=$(echo "${DB_INFO}" | grep 'db_port'| awk '{print $2}' | sed 's/"//g' | sed 's/,$//g')
+
+
+echo "username: ${DB_USERNAME}"
+echo "password: ${DB_PASSWORD}"
+echo "db name: ${DB_NAME}"
+echo "db host: ${DB_HOST}"
+echo "db port: ${DB_PORT}"
+
+PORTAL_CONNECT_STRING="
+jdbc.default.driverClassName=com.mysql.jdbc.Driver
+jdbc.default.url=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
+jdbc.default.username=${DB_USERNAME}
+jdbc.default.password=${DB_PASSWORD}
+"
+echo "------------------"
+echo "portal connect string"
+echo "------------------"
+echo "${PORTAL_CONNECT_STRING}"

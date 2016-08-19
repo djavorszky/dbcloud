@@ -1,0 +1,16 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "executes kue commands",
+  "main": "worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gyula.weber.in@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bonjour": "^3.3.0",
+    "kue": "^0.10.5",
+    "zmq-log-sender": "1"
+  }
+}

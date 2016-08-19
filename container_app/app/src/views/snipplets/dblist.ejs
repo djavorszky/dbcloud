@@ -1,0 +1,15 @@
+<table class='table' id='db_table'>
+
+<th></th>
+<th> Server type</th>
+<th> Database name </th>
+<th> Source </th>
+<th> Created by </th>
+<th> Actions </th>
+<th> Information </th>
+<% debugger; %>
+<% dbrows.forEach(function(dbrow) { %>
+  <% include dblist_row.ejs %>
+<% }); %>
+</table>
+

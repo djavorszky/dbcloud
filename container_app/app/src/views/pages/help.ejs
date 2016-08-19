@@ -1,0 +1,49 @@
+
+<div id="modal_db_help" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+
+<!-- Modal content-->
+<div class="modal-content modal-content-lg">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title"> Additional info about the application</h4>
+</div>
+<div class="modal-body">
+  <h4>Summary</h4>
+
+  It's a database import app, the main workflow is
+  <ol>
+  <li>You select an sql dump and choose a database engine (you can set a custom database name, username, password)</li>
+  <li>The app will import the database into the engine and displays the access data, and the relevant section of portal.properties</li>
+  </ol>
+
+  <h4>visible features</h4>
+  <ul>
+  <li>By default, the databases will expire in 90 days, after that, they will be removed automatically, but you can extend it from the menu</li>
+  <li>You can create a clone from the imported database</li>
+  <li>Status display; the colour of the row's left border</li>
+    <ul>
+      <li>Green: OK</li>
+      <li>Yellow: In progress</li>
+      <li>Black: Removed, but still visible to avoid flickering in live updates</li>
+      <li>Red: Error</li>
+    </ul>
+  <li>You can see the last message related to the actual database by clicking the down arrow in the first column</li>
+  </ul>
+
+  <h4>not-so visible features</h4>
+  <ul>
+  <li>The frontend can be upgraded while the import / clone / remove is in
+  progress, it won't interrupt them.</li>
+  <li>The deployment is two command, which says "Build a new app", "Replace the current one with the new one"</li>
+  <li>The only notable external dependency for the "prod" app is the docker engine, and the docker-compose.</li>
+  <li>The app is using socket.io for refreshing the page, so it's near-real-time. After a login, all communication is sent / received by websockets, so there is no page reloading at all </li>
+  </ul>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+
+</div>
+</div>

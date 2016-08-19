@@ -1,0 +1,57 @@
+<span id='current_user' class='data-only' ><%= username %></span>
+<nav class='navbar navbar-default' role='navigation'>
+
+  <div class='navbar-header'>
+          <a class='navbar-brand' href='/'>Cloud DB</a>
+  </div>
+
+  <div class='collapse navbar-collapse'>
+
+    <!-- <start of menuitems> -->
+    <ul class='nav navbar-nav navbar-left'>
+      <li>
+        <p class='navbar-text'>
+
+        <a data-toggle="modal" class="btn btn-default"
+        id="info_button"
+        data-target="#modal_db_help"  href='#'>Info</a>
+        </p>
+      </li>
+
+      <li>
+        <p class='navbar-text'>
+          <a href="#"
+            id='btn_new_database'
+            class='new_database btn btn-default'
+          >
+
+            New empty database
+
+          </a>
+
+            <a href="/getCurlScript" class='btn btn-default'>
+              Get cmdb
+            </a>
+            <!-- <a href="#" class='show_user_tokens btn btn-default'>
+             Token management
+            </a> -->
+        </p>
+      </li>
+
+    </ul>
+
+
+    <ul class='nav navbar-nav navbar-right'>
+    <li>
+       <p class='navbar-text'>
+
+         <a class='btn btn-default' id='logout_link' href='/logout'>
+           Logout
+         </a>
+
+       </p>
+    </li>
+
+    </ul> <!-- </menuitems> -->
+  </div> <!-- </collapse navbar-collapse> -->
+</nav> <!-- </navbar navbar-default> -->

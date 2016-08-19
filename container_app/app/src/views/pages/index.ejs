@@ -1,0 +1,64 @@
+<html>
+  <head>
+  <%- include('../snipplets/head.ejs'); %>
+  <title> Cloud DB </title>
+  </head>
+
+<body>
+
+<div class='container-fluid'>
+
+<!-- Top menu -->
+
+<div class='row'>
+<%- include('../snipplets/top_nav.ejs'); %>
+</div> <!-- </row, navbar> -->
+
+<div class='row'>
+    <div class='col-md-8'>
+    </div>
+    <div class='col-md-4'>
+        <!-- login section start -->
+        <!-- show a selection of files -->
+        <% if (is_session_authenticated == 0) { %>
+            <a href='/login'> Please log in </a>
+        <% } else { %>
+        <% } %>
+    </div>
+    <% if (is_session_authenticated == 1) { %>
+</div>
+<!-- file section start -->
+<div class='row'>
+    <div class='file_selection col-md-4'>
+
+    </div>
+    <div class='status_box col-md-8'>
+
+       <input type='checkbox' id='show_only_mine'>
+       Show only my databases
+       <br>
+
+       <div class='db_list'> </div>
+       <div class='event_log'>
+         <h4> Event log </h4>
+         <div class='queue_log'></div>
+         <div class='d_progress'></div>
+       </div>
+    </div>
+</div> <!-- row section end -->
+<div id='notification'>
+
+</div>
+
+<!-- Modal -->
+<%- include('db_import_options.ejs') %>
+<%- include('db_clone_options.ejs') %>
+<%- include('db_new_database.ejs') %>
+<%- include('db_info.ejs') %>
+<%- include('help.ejs') %>
+<%- include('update_owner.ejs') %>
+<%- include('token_management.ejs') %>
+<% } %>
+</body>
+
+</html>

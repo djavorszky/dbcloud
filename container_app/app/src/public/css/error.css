@@ -1,0 +1,5 @@
+.failed {
+  height: 100%;
+  background-image: url('/media/access-denied.png');
+  background-repeat: no-repeat;
+}

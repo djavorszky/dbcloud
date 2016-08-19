@@ -1,0 +1,21 @@
+<tr>
+ <td> <%= dbserver.name %></td>
+ <td> <%= dbserver.version %></td>
+ <td> <%= dbserver.host %></td>
+ <td> <%= dbserver.port %></td>
+ <td> <%= dbserver.friendlyname %></td>
+ <td> <%= dbserver.provider %></td>
+ <td> <%= dbserver.admin_username %></td>
+ <td> <%= dbserver.admin_password %></td>
+
+  <td>
+
+    <a href='#' ref='<%= dbserver._id %>'
+    class='remove_dbserver dbserver_row_<%= dbserver._id %>'>
+
+      <span class='glyphicon glyphicon-trash'></span>
+
+    </a>
+
+  </td>
+</tr>

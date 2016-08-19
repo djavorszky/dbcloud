@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "app root is ${APP_ROOT}, node modules will be installed into ${NODE_MODULE_PATH}"
+
+cd ${APP_ROOT}
+node ./dbtest.js

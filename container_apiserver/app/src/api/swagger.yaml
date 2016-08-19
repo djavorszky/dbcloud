@@ -1,0 +1,309 @@
+---
+swagger: "2.0"
+info:
+  description: "let's make it work"
+  version: "1.0.0"
+  title: "dbCloud API"
+host: "localhost:8077"
+basePath: "/v1"
+schemes:
+- "http"
+produces:
+- "application/json"
+paths:
+  /backendDatabases:
+    get:
+      tags:
+      - "database"
+      description: "Get the list of databases directly from backend (mysql, whatever)"
+      operationId: "backendDatabasesGET"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "backend_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/DummyDatabase"
+        404:
+          description: "Not found"
+        500:
+          description: "Failed"
+      x-swagger-router-controller: "Database"
+  /database:
+    get:
+      tags:
+      - "database"
+      description: "Get database info by database name"
+      operationId: "databaseGET"
+      parameters:
+      - name: "database_name"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/Database"
+        404:
+          description: "Not found"
+        500:
+          description: "Failed"
+      x-swagger-router-controller: "Database"
+    post:
+      tags:
+      - "database"
+      description: "Creates a new database"
+      operationId: "databasePOST"
+      parameters:
+      - name: "token"
+        in: "query"
+        description: "Your personal access token"
+        required: true
+        type: "string"
+      - name: "backend_name"
+        in: "query"
+        description: "Unique backend name: mysql_55 | mysql_56 | mysql_57"
+        required: true
+        type: "string"
+      - name: "name"
+        in: "query"
+        description: "The name of the database which you want to be created"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "query"
+        description: "Unique username for the database"
+        required: false
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "Password, to access the database"
+        required: false
+        type: "string"
+      - name: registryOnly
+        required: false
+        type: string
+        in: query
+        description: Don't create the actual database, just add it to the registry
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/Database"
+        500:
+          description: "Failed"
+      x-swagger-router-controller: "Database"
+    delete:
+      tags:
+      - "database"
+      description: "Deletes a database"
+      operationId: "databaseDELETE"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Ok"
+        404:
+          description: "Not found"
+        500:
+          description: "Failed"
+      x-swagger-router-controller: "Database"
+  /databaseBackend:
+    get:
+      tags:
+      - "backend"
+      summary: "Get a database backend"
+      operationId: "databaseBackendGET"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "server_name"
+        in: "query"
+        description: "The unique name of the database server instance"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Backend connect info"
+          schema:
+            $ref: "#/definitions/DatabaseBackend"
+      x-swagger-router-controller: "Backend"
+    post:
+      tags:
+      - "backend"
+      summary: "Create a database backend"
+      operationId: "databaseBackendPOST"
+      parameters:
+      - name: "server_name"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "server_host"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "server_ip"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "admin_username"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "admin_password"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Saved succesfully"
+        500:
+          description: "Save failed"
+      x-swagger-router-controller: "Backend"
+    delete:
+      tags:
+      - "backend"
+      summary: "detele a database backend"
+      operationId: "databaseBackendDELETE"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "server_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Deleted"
+        500:
+          description: "Failed to delete"
+      x-swagger-router-controller: "Backend"
+  /databaseBackends:
+    get:
+      tags:
+      - "backend"
+      summary: "Get a database backends"
+      operationId: "databaseBackendsGET"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Backend connect info"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/DatabaseBackend"
+      x-swagger-router-controller: "Backend"
+  /databases:
+    get:
+      tags:
+      - "database"
+      description: "Get databases by backend"
+      operationId: "databasesGET"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "backend_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Database"
+        404:
+          description: "Not found"
+        500:
+          description: "Failed"
+      x-swagger-router-controller: "Database"
+  /invalidateDatabase:
+    get:
+      tags:
+      - "database"
+      description: "Marks a database as invalid (for example, when the actual database\
+        \ was not found on the database server)"
+      operationId: "invalidateDatabaseGET"
+      parameters:
+      - name: "token"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "db_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Ok"
+        404:
+          description: "Not found"
+        500:
+          description: "Failed"
+      x-swagger-router-controller: "Database"
+definitions:
+  DatabaseBackend:
+    type: "object"
+    properties:
+      server_name:
+        type: "string"
+      server_ip:
+        type: "string"
+      server_port:
+        type: "string"
+      admin_username:
+        type: "string"
+      admin_password:
+        type: "string"
+  DummyDatabase:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+  Database:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      username:
+        type: "string"
+      password:
+        type: "string"
+      backend_name:
+        type: "string"

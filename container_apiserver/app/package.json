@@ -1,0 +1,24 @@
+{
+  "name": "db-cloud-api",
+  "version": "1.0.0",
+  "description": "let's make it work",
+  "main": "index.js",
+  "keywords": [
+    "swagger"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.4.1",
+    "http": "0.0.0",
+    "js-yaml": "^3.6.0",
+    "kue": "^0.10.5",
+    "mongoose": "^4.4.13",
+    "project-name-generator": "2",
+    "render-ejs-template": "0",
+    "swagger-tools": "^0.9.16",
+    "uuid4": "^1.0.0",
+    "zmq-comm": "0.0.2",
+    "zmq-log-sender": "^1.2.0"
+  }
+}

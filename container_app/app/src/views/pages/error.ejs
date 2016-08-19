@@ -1,0 +1,25 @@
+<html>
+<head>
+<%- include("../snipplets/head.ejs"); %>
+<link href="/css/error.css" rel="stylesheet">
+
+</head>
+<body class='failed'>
+<div class='container container-fluid'>
+  <div class='row'>
+    <div class='col-md-4'>
+    </div>
+    <div class='col-md-8'>
+      <h2><span class='label label-warning'>Login failed</span></h2>
+      <p class='error'><%= message %></p>
+      <p class='alert alert-info'>Please retry</p>
+      <a href='/login' class='btn btn-primary'>Retry</a>
+
+    </div>
+  </div>
+
+  <div class='row'>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+
+
+.data-only {
+  display: none;
+}
+
+/* this is the default size */
+.medium_text {
+    font-size: medium;
+}
+
+.modal-content-sm {
+  width: 600px;
+}
+
+.modal-content-lg {
+  width: 800px;
+}
+
+/* Event log */
+
+.event_log {
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+/* Status messages for the database rows */
+.status_removed {
+  border-left: 15px solid black;
+}
+
+.status_progress {
+  border-left: 15px solid yellow;
+}
+
+.status_ok {
+  border-left: 15px solid green;
+}
+
+.status_error {
+  border-left: 15px solid red;
+}
+
+/* if I dont do this, ther will be an extra space in front of the line */
+kbd {
+  padding: 2px 0px;
+}
+
+/* old definitions for showing database server statuses */
+.online {
+  color: green;
+}
+
+.offline {
+  color: red;
+}
+.done {
+  color: green;
+}
+/* .display_directory {
+  color: darkblue;
+  background-color: lightgrey;
+} */
+
+.file_selection {
+    height: 90%;
+    overflow-y: auto;
+    overflow-x: none;
+}
+.file_selection  td {
+  height: 1.5em;
+  padding-right: 1.3em;
+}
+
+.db_list {
+    overflow-y: auto;
+    overflow-x: none;
+    height: 70%;
+}
+
+/* by default, its too small to display longer lines */
+.popover{
+  max-width: 100%;
+}
+
+

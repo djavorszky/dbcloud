@@ -1,0 +1,37 @@
+
+<div id="modal_db_clone" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content modal-content-lg">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title"> Cloning options</h4>
+</div>
+<div class="modal-body">
+<p>If you leave those values empty, the parameters will be generated and the database will be cloned</p>
+<table>
+<tr><td>Internal Database ID</td><td> <input type="text" id="db_clone_ref" disabled></td></tr>
+
+<tr><td>Target database type</td><td>
+    <select name='target_db_type' id='target_db_type'>
+    <% dbservers.forEach(function(dbserver) { %>
+      <option value='<%= dbserver.name%>'> <%= dbserver.friendlyname %> </option>
+    <% }); %>
+    </select>
+</td></tr>
+
+<tr><td>Target database name</td><td> <input type="text" value="" id="dst_db_name"></td></tr>
+<tr><td>Target username</td><td> <input type="text" value="" id="dst_db_username"></td></tr>
+<tr><td>Target password</td><td> <input type="text" value="" id="dst_db_password"></td></tr>
+<tr><td>Send an email when ready</td><td><input type='checkbox'
+id="request_clone_email"></td></tr>
+</table>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default do_clone_db" data-dismiss="modal">Import</button>
+</div>
+</div>
+
+</div>
+</div>

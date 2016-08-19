@@ -1,0 +1,65 @@
+<h2>
+<a id='cd_root' href='#' class='btn btn-info click_dir' ref='BASE_DIR'>/</a>
+<span class='medium_text'><%= current_directory.replace('/mnt','server:/');
+%></span>
+</h2>
+<table class='table-striped medium_text'>
+
+<th>Name</th><th>Size</th>
+<%
+var directory_arr = current_directory.split('/');
+
+directory_arr.pop();
+
+var basedir_len = BASE_DIR.split('/').length;
+var current_len = directory_arr.length;
+
+if (directory_arr.length >= BASE_DIR.split('/').length) {
+    var previous_directory = directory_arr.join('/');
+} else {
+    var previous_directory = current_directory;
+}
+%>
+<tr><td> <a href='#' id='cd_dot_dot' class='click_dir' ref='<%= previous_directory %>'><span
+class='glyphicon glyphicon-menu-up'></span></a></td></tr>
+<% files.forEach(function(file) { %>
+  <tr>
+  <td>
+    <% if(file.type == 'directory') { %>
+        <span class='display_directory'> <a href='#' id='dir_<%= file.name  %>' class='click_dir' ref='<%= file.current_directory %>/<%= file.name %>'><%= file.name %></a><br></span>
+    <% } else {%>
+        <% if(file.is_dbdump) { %>
+          <div class="dropdown">
+               <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="selectdump_<%= file.name %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+               <span class='display_file'> <%= file.name %></span>
+               <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu" ref="<%= file.current_directory %>/<%= file.name%>" aria-labelledby="dropdownMenu1">
+               <% dbs.forEach(function(db) { %>
+                <li>
+                  <a
+                    href='#'
+                    id='<%= db.name %>_import_<%= file.name %>'
+                    ref='<%= db.name %>'
+                    data-toggle="modal"
+                    data-target='#myModal'
+                    class='import_mysql'
+                  ><%= db.friendlyname %></a></li>
+               <% }); %>
+               </ul>
+          </div>
+        <% } else { %>
+            <span class='display_file'><%= file.name %></span>
+        <% } %>
+    <% } %>
+  </td>
+
+  <td>
+      <% if(file.type != 'directory') { %>
+        <%= file.size_string %>
+      <% } %>
+  </td>
+  </tr>
+<% }); %>
+
+</table>
