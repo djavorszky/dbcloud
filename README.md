@@ -3,11 +3,20 @@ database server abstraction layer
 
 # How to try it out
 
-* Generate a compose file with your current environment. There is an .env-example file, so you just have to type 
+* Generate a compose file with your current environment. There is an .env-example file, so you just have to type
 ``` ./generate-compose.sh example ```
 
 * Build the containers
 ``` docker-compose build ```
+
+* Start the services
+``` docker-compose up -d ```
+
+It creates an isolated virtual network and launch the services inside it. The -d is stands for daemon mode, because you omit it,
+it'll start dumping the logs and when you press ctrl-c, it'll stop the services. Anyways, you can follow the logs by writing
+
+``` docker-compose logs -f ```
+where "f" means follow, until you press ctrl-c (and in this case stopping the log stream won't stop the actual services).
 
 # Components
 
