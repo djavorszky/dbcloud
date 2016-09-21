@@ -1,44 +1,62 @@
 
 <div id="modal_new_database" class="modal fade" role="dialog">
-<div class="modal-dialog">
+	<div class="modal-dialog">
 
 <!-- Modal content-->
-<div class="modal-content modal-content-sm">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-<h4 class="modal-title">Import options</h4>
-</div>
-<div class="modal-body">
-<p>If you leave those values empty, the parameters will be generated and the database will be imported</p>
-<table>
+		<div class="modal-content modal-content-sm">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Import options</h4>
+			</div>
+			<div class="modal-body">
 
-<tr><td>ref</td><td> <input type="text" id="db_new_ref" disabled></td></tr>
+				<div class="row">
+					<div class="col-md-12">
+						<p>If you leave those values empty, the parameters will be generated and the database will be imported</p>
 
-<tr><td>file</td><td> <input type="text" id="db_new_file" disabled></td></tr>
+						<form class="form-horizontal">
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_ref">ref</label>
+								<input class="col-md-7" type="text" id="db_new_ref" disabled>
+							</div>
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_file">file</label>
+								<input class="col-md-7" type="text" id="db_new_file" disabled>
+							</div>
+							
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_server_name">target database type</label>
+							    <select class="col-md-7" id='db_new_server_name'>
+							        <option value='mysql_55'>MySQL 5.5</option>
+							        <option value='mysql_56'>MySQL 5.6</option>
+							        <option value='mysql_57'>MySQL 5.7</option>
+							    </select>
+							</div>
+							
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_username">username</label>
+								<input class="col-md-7" type="text" id="db_new_username">
+							</div>
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_password">password</label>
+								<input class="col-md-7" type="text" id="db_new_password">
+							</div>
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_dbname">database name</label>
+								<input class="col-md-7" type="text" id="db_new_dbname">
+							</div>
+							<div class="form-group col-md-12">
+								<label class="col-md-5" for="db_new_request_email">send email when ready</label>
+								<input type='checkbox' id='db_new_request_email'>
+						  	</div>
 
-<tr><td>target database type</td><td>
-    <select id='db_new_server_name'>
-        <option value='mysql_55'>MySQL 5.5</option>
-        <option value='mysql_56'>MySQL 5.6</option>
-        <option value='mysql_57'>MySQL 5.7</option>
-    </select>
-</td></tr>
-
-<tr><td>username</td><td> <input type="text" value="" id="db_new_username"></td></tr>
-
-<tr><td>password</td><td> <input type="text" value="" id="db_new_password"></td></tr>
-
-<tr><td>database name</td><td> <input type="text" value="" id="db_new_dbname"></td></tr>
-
-<tr><td>send an email when ready</td><td><input type='checkbox'
-id="db_new_request_email"></td></tr>
-
-</table>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default just_create_db" data-dismiss="modal">Create</button>
-</div>
-</div>
-
-</div>
+							<div class="modal-footer col-md-12">
+								<button type="button" class="btn btn-default just_create_db" data-dismiss="modal">Create</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
