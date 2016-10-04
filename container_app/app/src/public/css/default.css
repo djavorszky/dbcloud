@@ -49,7 +49,7 @@
   border-left: 15px solid red;
 }
 
-/* if I dont do this, ther will be an extra space in front of the line */
+/* if I dont do this, there will be an extra space in front of the line */
 kbd {
   padding: 2px 0px;
 }

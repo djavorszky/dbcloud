@@ -5,58 +5,55 @@
 		<div class="modal-content modal-content-sm">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Import options</h4>
+				<h4 class="modal-title">Create database</h4>
 			</div>
 			<div class="modal-body">
-
-				<div class="row">
-					<div class="col-md-12">
-						<p>If you leave the below values empty, the parameters for the new database will be generated.</p>
-
-						<form class="form-horizontal">
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_ref">Ref</label>
-								<input class="col-md-7" type="text" name="new_db_new_ref" id="new_db_new_ref" disabled>
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_file">File</label>
-								<input class="col-md-7" type="text" name="new_db_new_file" id="new_db_new_file" disabled>
-							</div>
-							
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_server_name">Target database type</label>
-							    <select class="col-md-7" id="new_db_new_server_name" name="db_new_server_name">
-							        <option value='mysql_55'>MySQL 5.5</option>
-							        <option value='mysql_56'>MySQL 5.6</option>
-							        <option value='mysql_57'>MySQL 5.7</option>
-							    </select>
-							</div>
-							
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_username">Username</label>
-								<input class="col-md-7" type="text" name="db_new_username" id="new_db_new_username">
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_password">Password</label>
-								<input class="col-md-7" type="text" name="db_new_password" id="new_db_new_password">
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_dbname">Database name</label>
-								<input class="col-md-7" type="text" name="db_new_dbname" id="new_db_new_dbname">
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="new_db_new_request_email">Send email when ready
-								    <input type='checkbox' id="new_db_new_request_email" name="db_new_request_email">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>If you leave the below values empty, the parameters for the new database will be generated.</p>
+                    </div>
+                    <form class="form">
+                        <div class="form-group col-md-12">
+                            <label for="new_db_new_ref">Ref</label>
+                            <input class="col-md-12" type="text" name="new_db_new_ref" id="new_db_new_ref" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="new_db_new_file">File</label>
+                            <input class="col-md-12" type="text" name="new_db_new_file" id="new_db_new_file" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="new_db_new_server_name">Target database type</label>
+                            <select class="col-md-12" id="new_db_new_server_name" name="db_new_server_name">
+                                <option value='mysql_55'>MySQL 5.5</option>
+                                <option value='mysql_56'>MySQL 5.6</option>
+                                <option value='mysql_57'>MySQL 5.7</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="new_db_new_username">Username</label>
+                            <input class="col-md-12" type="text" name="db_new_username" id="new_db_new_username">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="new_db_new_password">Password</label>
+                            <input class="col-md-12" type="text" name="db_new_password" id="new_db_new_password">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="new_db_new_dbname">Database name</label>
+                            <input class="col-md-12" type="text" name="db_new_dbname" id="new_db_new_dbname">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type='checkbox' id="new_db_new_request_email"> Send email when ready
                                 </label>
-						  	</div>
-
-							<div class="modal-footer col-md-12">
-								<button type="button" class="btn btn-default just_create_db" data-dismiss="modal">Create</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer col-md-12">
+                        <button type="button" class="btn btn-default just_create_db" data-dismiss="modal">Create</button>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>

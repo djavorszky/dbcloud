@@ -2,42 +2,45 @@
 <div id="myModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 	<!-- Modal content-->
-		<div class="modal-content modal-content-lg">
+		<div class="modal-content modal-content-sm">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Import options</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-12">
-						<p>If you leave the below values empty, the parameters will be generated and the database will be imported</p>
-						<form class="form-horizontal">
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="db_input_ref">Server type</label>
-								<input class="col-md-7" type="text" id="db_input_ref" disabled>
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="db_input_file">Import file</label>
-								<input class="col-md-7" type="text" id="db_input_file" disabled>
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="db_new_username">Username</label>
-								<input class="col-md-7" type="text" id="db_new_username">
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="db_new_password">Password</label>
-								<input class="col-md-7" type="text" id="db_new_password">
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="db_new_dbname">Database name</label>
-								<input class="col-md-7" type="text" id="db_new_dbname">
-							</div>
-							<div class="form-group col-md-12">
-								<label class="col-md-5" for="db_new_request_email">Send email when ready</label>
-								<input type='checkbox' id='db_new_request_email'>
-						  	</div>
-						</form>
-					</div>
+                    <div class="col-md-12">
+                        <p>If you leave the below values empty, the parameters will be generated and the database will be imported</p>
+                    </div>
+                    <form class="form">
+                        <div class="form-group col-md-12">
+                            <label for="db_input_ref">Server type</label>
+                            <input class="col-md-12" type="text" id="db_input_ref" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="db_input_file">Import file</label>
+                            <input class="col-md-12" type="text" id="db_input_file" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="db_new_username">Username</label>
+                            <input class="col-md-12" type="text" id="db_new_username">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="db_new_password">Password</label>
+                            <input class="col-md-12" type="text" id="db_new_password">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="db_new_dbname">Database name</label>
+                            <input class="col-md-12" type="text" id="db_new_dbname">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type='checkbox' id="db_new_request_email"> Send email when ready
+                                </label>
+                            </div>
+                        </div>
+                    </form>
 				</div>
 			</div>
 			<div class="modal-footer">
